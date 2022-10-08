@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <stacklandsDir>C:\SteamLibrary\steamapps\common\Stacklands</stacklandsDir>
+        <stacklandsDir>E:\SteamLibrary\steamapps\common\Stacklands</stacklandsDir>
         <pluginsDir>$(AppData)\Thunderstore Mod Manager\DataFolder\Stacklands\profiles\Default\</pluginsDir>
     </PropertyGroup>
 </Project>

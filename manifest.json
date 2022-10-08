@@ -1,7 +1,7 @@
 {
-  "name": "yourmod",
-  "id": "yourmod_customid",
-  "description": "Your Mod's description.",
+  "name": "PvP Mod",
+  "id": "pvpmod",
+  "description": "Allow you to send soldier and tamed monster through the portal to raid another player.",
   "version_number": "0.0.1",
   "dependencies": [ "BepInEx-BepInExPack_Stacklands-5.4.2100", "BerryLoader-BerryLoader-0.5.2" ],
   "website_url": "https://github.com/Kahdeg-15520487/berry-mod-template"
