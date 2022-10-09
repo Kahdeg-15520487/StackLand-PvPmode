@@ -25,13 +25,7 @@ namespace PvPMod
             {
                 log.LogInfo("button pressed");
             });
-            //settlementButton.GetComponent<Image>().sprite = Sprite.Create(Datas.Textures["image_button"], new Rect(0, 0, 1024, 1024), Vector2.zero);
-            //log.LogInfo(settlementButton?.GetType());
-            //log.LogInfo(settlementButton.Image?.GetType());
-            //log.LogInfo(settlementButton.Image.sprite?.GetType());
-            //log.LogInfo(settlementButton.Image.sprite.texture?.GetType());
-            //settlementButton.image = 
-            //settlementButton.Image.sprite.texture.LoadImage(Datas.Textures["image_button"].GetRawTextureData());
+            settlementButton.GetComponent<Image>().sprite = Sprite.Create(Datas.Textures["image_button"], new Rect(0, 0, 1024, 1024), Vector2.zero);
             MenuAPI.CreateButton(parent, "Back", GameCanvas.instance.MainMenuScreen);
 
             menuButton = MenuAPI.CreateButton(GameCanvas.instance.MainMenuScreen.GetChild(0).GetChild(5), "Play on a server", serverScreen);

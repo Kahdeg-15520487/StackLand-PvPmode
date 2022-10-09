@@ -24,18 +24,6 @@ namespace PvPMod
 
             Datas.ModDir = Directory.GetParent(this.Info.Location).FullName;
             L.LogInfo($"Set mod dir to {Datas.ModDir}");
-            L.LogInfo($"Loading textures from {Path.Combine(Datas.ModDir, "textures.txt")} {File.Exists(Path.Combine(Datas.ModDir, "textures.txt"))}");
-            foreach (var t in File.ReadAllLines(Path.Combine(Datas.ModDir, "textures.txt")).Select(l => l.Split('|')))
-            {
-                L.LogInfo($"Loading {t[0]}: {Path.Combine(Datas.ModDir, "UI", t[1])} {File.Exists(Path.Combine(Datas.ModDir, "UI", t[1]))}");
-                var rawimg = File.ReadAllBytes(Path.Combine(Datas.ModDir, "UI", t[1]));
-                var imgWidth = int.Parse(t[2]);
-                var imgHeight = int.Parse(t[3]);
-                var tex = new Texture2D(imgWidth, imgHeight);
-                ImageConversion.LoadImage(tex, rawimg);
-                Datas.Textures.Add(t[0], tex);
-                L.LogInfo($"Loaded {t[0]}");
-            }
         }
     }
 
@@ -46,6 +34,18 @@ namespace PvPMod
         public static void GCAPost()
         {
             //MenuAPI.Init();
+            var L = BerryLoader.L;
+            L.LogInfo($"Loading textures from {Path.Combine(Datas.ModDir, "textures.txt")} {File.Exists(Path.Combine(Datas.ModDir, "textures.txt"))}");
+            foreach (var t in File.ReadAllLines(Path.Combine(Datas.ModDir, "textures.txt")).Select(l => l.Split('|')))
+            {
+                L.LogInfo($"Loading {t[0]}: {Path.Combine(Datas.ModDir, "UI", t[1])} {File.Exists(Path.Combine(Datas.ModDir, "UI", t[1]))}");
+                var rawimg = File.ReadAllBytes(Path.Combine(Datas.ModDir, "UI", t[1]));
+                L.LogInfo(rawimg.Length);
+                var tex = new Texture2D(2, 2);
+                tex.LoadImage(rawimg);
+                Datas.Textures.Add(t[0], tex);
+                L.LogInfo($"Loaded {t[0]}");
+            }
             var m = new GameObject().AddComponent<CustomMenu>();
             BerryLoader.L.LogInfo("hooking custom menu");
         }
