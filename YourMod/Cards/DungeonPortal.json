@@ -1,0 +1,9 @@
+{
+  "id": "dungeon_portal",
+  "nameOverride": "Dungeon Portal",
+  "descriptionOverride": "Enter the dungeon for loot.",
+  "value": 5,
+  "type": "locations",
+  "icon": "bruh.png",
+  "script": "CoopDungeon.Source.DungeonPortal"
+}

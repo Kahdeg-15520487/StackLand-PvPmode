@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PvPMod
+namespace CoopDungeon
 {
     public class CustomMenu : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace PvPMod
 
         public void Start()
         {
-            var log = BerryLoader.L;
+            var log = Plugin.L;
             log.LogInfo("initing screen..");
 
             serverScreen = MenuAPI.CreateScreen("Connect to a server");

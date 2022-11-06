@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PvPMod
+namespace CoopDungeon
 {
     [BepInPlugin("pvpmod", "PvP mode", "0.0.1")]
     [BepInDependency("BerryLoader")]
@@ -24,6 +24,17 @@ namespace PvPMod
 
             Datas.ModDir = Directory.GetParent(this.Info.Location).FullName;
             L.LogInfo($"Set mod dir to {Datas.ModDir}");
+
+            var translationFilePath = Path.Combine(Datas.ModDir, "translation.tsv");
+
+            if (!File.Exists(translationFilePath))
+            {
+                L.LogError("translation.tsv missing!");
+            }
+            else
+            {
+                LocAPI.LoadTsvFromFile(translationFilePath);
+            }
         }
     }
 
@@ -34,10 +45,14 @@ namespace PvPMod
         public static void GCAPost()
         {
             //MenuAPI.Init();
-            var L = BerryLoader.L;
+            var L = Plugin.L;
             L.LogInfo($"Loading textures from {Path.Combine(Datas.ModDir, "textures.txt")} {File.Exists(Path.Combine(Datas.ModDir, "textures.txt"))}");
             foreach (var t in File.ReadAllLines(Path.Combine(Datas.ModDir, "textures.txt")).Select(l => l.Split('|')))
             {
+                if (Datas.Textures.ContainsKey(t[0]))
+                {
+                    continue;
+                }
                 L.LogInfo($"Loading {t[0]}: {Path.Combine(Datas.ModDir, "UI", t[1])} {File.Exists(Path.Combine(Datas.ModDir, "UI", t[1]))}");
                 var rawimg = File.ReadAllBytes(Path.Combine(Datas.ModDir, "UI", t[1]));
                 L.LogInfo(rawimg.Length);
@@ -46,8 +61,12 @@ namespace PvPMod
                 Datas.Textures.Add(t[0], tex);
                 L.LogInfo($"Loaded {t[0]}");
             }
-            var m = new GameObject().AddComponent<CustomMenu>();
-            BerryLoader.L.LogInfo("hooking custom menu");
+            var gobj = new GameObject();
+            //gobj.AddComponent<CustomMenu>();
+            gobj.AddComponent<SteamManager>();
+            Plugin.L.LogInfo("hooking custom menu");
+
+            WorldManager.instance.Boards.Add(BoardAPI.CreateBoard("dungeon"));
         }
     }
 

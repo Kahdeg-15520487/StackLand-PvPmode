@@ -1,0 +1,6 @@
+Term	Notes	English
+card_dungeon_portal_status		Preparing
+coop_dungeon_label_enter_dungeon_full		Entering dungeon
+coop_dungeon_label_not_enough_food_before_entering_dungeon		You need to have enough Food for your Villagers before you can enter the Dungeon
+coop_dungeon_label_return_to_mainland_prompt		Are you sure you want to travel back to the Mainland? This will end the current Moon.
+coop_dungeon_label_go_to_dungeon_prompt		Are you sure you want to travel to the Dungeon? This will first end the current Moon and feed your Villagers

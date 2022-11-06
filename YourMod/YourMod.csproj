@@ -7,6 +7,7 @@
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
+    <RootNamespace>CoopDungeon</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,6 +33,9 @@
       <HintPath>$(stacklandsDir)/Stacklands_Data/Managed/Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Steamworks.NET">
+      <HintPath>Steamworks.NET.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>$(stacklandsDir)/Stacklands_Data/Managed/Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
@@ -44,5 +48,11 @@
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Cards\DungeonPortal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
